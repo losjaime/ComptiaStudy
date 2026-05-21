@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reference Sheets — CompTIA A+ Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">CompTIA A+</a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="reference.html" class="active">Reference</a>
+    <a href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<div class="page-container">
+
+  <div class="ref-header">
+    <h1 class="page-title">Reference Sheets</h1>
+    <p class="page-subtitle">Key facts, tables, and standards you need to memorize for the exam.</p>
+    <div class="ref-filter-bar">
+      <button class="ref-filter-btn active" data-filter="all">All</button>
+      <button class="ref-filter-btn" data-filter="core1">Core 1</button>
+      <button class="ref-filter-btn" data-filter="core2">Core 2</button>
+    </div>
+  </div>
+
+  <div id="ref-sections"></div>
+
+</div>
+
+<script src="reference-data.js"></script>
+<script>
+  let activeFilter = 'all';
+
+  function renderSections(filter) {
+    const container = document.getElementById('ref-sections');
+    container.innerHTML = '';
+    REFERENCE_SECTIONS
+      .filter(s => filter === 'all' || s.exam === filter)
+      .forEach(section => {
+        const div = document.createElement('div');
+        div.className = 'ref-section';
+        div.dataset.exam = section.exam;
+
+        let inner = `<div class="ref-section-header">
+          <h2>${section.title}</h2>
+          <span class="exam-code">${section.exam === 'core1' ? '220-1201' : '220-1202'}</span>
+        </div>`;
+
+        if (section.type === 'table') {
+          inner += `<div class="ref-table-wrap"><table class="ref-table">
+            <thead><tr>${section.columns.map(c => `<th>${c}</th>`).join('')}</tr></thead>
+            <tbody>${section.rows.map(row =>
+              `<tr>${row.map((cell, i) => {
+                const cls = i === 0 ? ' class="ref-key-col"' : '';
+                return `<td${cls}>${cell}</td>`;
+              }).join('')}</tr>`
+            ).join('')}</tbody>
+          </table></div>`;
+        } else if (section.type === 'list') {
+          inner += `<ol class="ref-step-list">${section.items.map(item =>
+            `<li><strong>${item.step}</strong><p>${item.detail}</p></li>`
+          ).join('')}</ol>`;
+        }
+
+        div.innerHTML = inner;
+        container.appendChild(div);
+      });
+  }
+
+  document.querySelectorAll('.ref-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ref-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      renderSections(activeFilter);
+    });
+  });
+
+  renderSections('all');
+</script>
+</body>
+</html>

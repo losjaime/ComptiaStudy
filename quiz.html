@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Quiz — CompTIA A+ Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">CompTIA A+</a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="quiz.html" class="active">Quiz</a>
+    <a href="reference.html">Reference</a>
+    <a href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<!-- ── Config ──────────────────────────────────────────────────────────────── -->
+<div id="quiz-config" class="page-container">
+  <div class="config-card">
+    <h1 class="page-title">Practice Quiz</h1>
+    <p class="page-subtitle">Multiple choice — same format as the real exam. Press A–D or 1–4 to select, Enter/Space to advance.</p>
+
+    <div class="config-grid">
+      <div class="config-field">
+        <label for="q-exam-select">Exam</label>
+        <select id="q-exam-select">
+          <option value="both">Both Exams</option>
+          <option value="core1">Core 1 (220-1201)</option>
+          <option value="core2">Core 2 (220-1202)</option>
+        </select>
+      </div>
+      <div class="config-field">
+        <label for="q-domain-select">Domain</label>
+        <select id="q-domain-select">
+          <option value="all">All domains</option>
+        </select>
+      </div>
+      <div class="config-field">
+        <label for="q-count-select">Questions</label>
+        <select id="q-count-select">
+          <option value="10">10 questions</option>
+          <option value="20">20 questions</option>
+          <option value="30">30 questions</option>
+          <option value="999">All available</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="q-start-btn" class="start-quiz-btn">Start Quiz</button>
+  </div>
+</div>
+
+<!-- ── Active Quiz ─────────────────────────────────────────────────────────── -->
+<div id="quiz-active" class="hidden page-container">
+  <div class="quiz-header-bar">
+    <span class="card-counter">Question <span id="q-num">1</span> of <span id="q-total">10</span></span>
+    <div id="q-domain-badge" class="card-domain-badge" style="padding:0.25rem 0.7rem;border-radius:6px;font-size:0.75rem;font-weight:600"></div>
+  </div>
+  <div class="session-progress-bar" style="margin-bottom:2rem">
+    <div class="session-progress-fill" id="q-progress-fill" style="width:0%"></div>
+  </div>
+
+  <div class="quiz-card">
+    <p id="q-text" class="quiz-question-text"></p>
+
+    <div id="q-options" class="options-list"></div>
+
+    <div id="q-explanation-box" class="explanation-box hidden">
+      <div class="explanation-label">Explanation</div>
+      <p id="q-explanation"></p>
+    </div>
+
+    <button id="q-next-btn" class="next-btn hidden">Next Question →</button>
+  </div>
+  <p class="flip-hint" style="text-align:center;margin-top:1rem">Press <kbd>A</kbd>–<kbd>D</kbd> to select · <kbd>Enter</kbd> to advance</p>
+</div>
+
+<!-- ── Results ──────────────────────────────────────────────────────────────── -->
+<div id="quiz-results" class="hidden page-container">
+  <div class="results-card">
+    <div style="font-size:3rem;text-align:center">📊</div>
+    <h2 style="text-align:center;margin-bottom:0.5rem">Quiz Complete!</h2>
+    <div class="score-display">
+      <span id="r-score" class="score-big">0</span>
+      <span class="score-sep"> / </span>
+      <span id="r-total" class="score-big">0</span>
+    </div>
+    <div id="r-pct" class="score-pct">0%</div>
+    <div class="progress-track" style="height:10px;border-radius:999px;margin-bottom:1.5rem">
+      <div id="r-bar" class="progress-fill" style="width:0%;height:100%;border-radius:999px"></div>
+    </div>
+    <div id="r-breakdown" class="r-breakdown"></div>
+    <div class="session-actions" style="margin-top:1.5rem">
+      <button id="r-restart-btn" class="btn-secondary">Retry Same Questions</button>
+      <button id="r-config-btn" class="btn-primary">New Quiz</button>
+    </div>
+  </div>
+</div>
+
+<script src="data/core1.js"></script>
+<script src="data/core2.js"></script>
+<script src="data/quiz-core1.js"></script>
+<script src="data/quiz-core2.js"></script>
+<script src="app.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>

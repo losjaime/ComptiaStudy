@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards — CompTIA A+ Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="display:flex;flex-direction:column;min-height:100vh">
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">CompTIA A+</a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="flashcards.html" class="active">Flashcards</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="reference.html">Reference</a>
+    <a href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<!-- Study header -->
+<div class="study-header">
+  <a href="index.html" class="back-btn">← Dashboard</a>
+  <div class="deck-controls">
+    <select id="fc-exam-select">
+      <option value="core1">Core 1 (220-1201)</option>
+      <option value="core2">Core 2 (220-1202)</option>
+    </select>
+    <select id="fc-domain-select">
+      <option value="all">All domains</option>
+    </select>
+    <select id="fc-mode-select">
+      <option value="due">Due cards</option>
+      <option value="weak">Weak cards (Again/Hard)</option>
+      <option value="all">All cards</option>
+    </select>
+  </div>
+  <div class="card-counter">
+    Card <span id="fc-card-num">1</span> of <span id="fc-card-total">0</span>
+  </div>
+</div>
+
+<div class="session-progress-bar">
+  <div class="session-progress-fill" id="fc-progress-fill" style="width:0%"></div>
+</div>
+
+<!-- Card stage -->
+<div class="card-stage" id="fc-stage" style="flex:1">
+  <div style="width:100%;max-width:660px">
+
+    <div class="card-wrapper">
+      <div class="card" id="fc-card">
+        <div class="card-face card-front-face">
+          <div class="card-domain-badge" id="fc-badge-front"></div>
+          <p class="card-question" id="fc-question"></p>
+        </div>
+        <div class="card-face card-back-face">
+          <div class="card-domain-badge" id="fc-badge-back"></div>
+          <p class="card-answer" id="fc-answer"></p>
+          <p class="card-detail" id="fc-detail"></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="flip-hint" id="fc-flip-hint">Click the card or press <kbd>Space</kbd> to reveal the answer</p>
+
+    <div class="rating-area hidden" id="fc-rating-area">
+      <button class="rate-btn" data-rating="again">Again<span class="rate-key-hint">1</span></button>
+      <button class="rate-btn" data-rating="hard">Hard<span class="rate-key-hint">2</span></button>
+      <button class="rate-btn" data-rating="good">Good<span class="rate-key-hint">3</span></button>
+      <button class="rate-btn" data-rating="easy">Easy<span class="rate-key-hint">4</span></button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Session complete -->
+<div class="session-complete hidden" id="fc-session-done" style="flex:1">
+  <div style="font-size:3rem">✅</div>
+  <h2>Session Complete!</h2>
+  <p>You reviewed <strong id="fc-session-count">0</strong> cards this session.</p>
+  <div class="session-actions">
+    <button class="btn-secondary" id="fc-restart-btn">Study Again</button>
+    <a href="index.html" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;padding:0.7rem 1.5rem">Back to Dashboard</a>
+  </div>
+</div>
+
+<script src="data/core1.js"></script>
+<script src="data/core2.js"></script>
+<script src="app.js"></script>
+<script src="flashcards.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompTIA A+ Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">CompTIA A+</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="reference.html">Reference</a>
+    <a href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<div id="dashboard" class="page-container">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:0.75rem">
+    <div>
+      <h1 style="font-size:1.5rem;font-weight:800;margin-bottom:0.15rem">Study Dashboard</h1>
+      <div style="font-size:0.85rem;color:var(--muted)" id="today-date"></div>
+    </div>
+    <span id="streak-badge" class="streak-badge">🔥 0 day streak</span>
+  </div>
+
+  <!-- Quick stats -->
+  <div class="dash-stats" style="margin-bottom:2rem">
+    <div class="stat-card">
+      <div class="stat-value" id="stat-mastered">0</div>
+      <div class="stat-label">Cards Mastered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-total">0</div>
+      <div class="stat-label">Total Cards</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-streak">0</div>
+      <div class="stat-label">Day Streak</div>
+    </div>
+  </div>
+
+  <!-- Exam cards -->
+  <div class="exam-grid">
+
+    <!-- Core 1 -->
+    <div class="exam-card">
+      <div class="exam-card-header">
+        <div>
+          <h2>Core 1</h2>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem">Pass: 675 / 900 &nbsp;·&nbsp; 90 min &nbsp;·&nbsp; 5 domains</div>
+        </div>
+        <span class="exam-code">220-1201</span>
+      </div>
+
+      <div class="readiness-row">
+        <span class="readiness-label">Exam Readiness</span>
+        <span class="readiness-value" id="core1-readiness" style="color:var(--muted)">0%</span>
+      </div>
+
+      <div class="due-badge" id="core1-due" style="margin-bottom:1rem">— due today</div>
+      <div class="domain-list" id="core1-domains"></div>
+
+      <div style="display:flex;gap:0.5rem;margin-top:1rem">
+        <a href="flashcards.html?exam=core1&mode=due" class="study-btn" style="text-decoration:none;text-align:center;flex:2" id="core1-study-btn">Study Now</a>
+        <a href="flashcards.html?exam=core1&mode=weak" class="study-btn" style="text-decoration:none;text-align:center;flex:1;background:var(--surface2);color:var(--muted);border:1px solid var(--border)" title="Weak cards only">Weak</a>
+      </div>
+    </div>
+
+    <!-- Core 2 -->
+    <div class="exam-card">
+      <div class="exam-card-header">
+        <div>
+          <h2>Core 2</h2>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem">Pass: 700 / 900 &nbsp;·&nbsp; 90 min &nbsp;·&nbsp; 4 domains</div>
+        </div>
+        <span class="exam-code">220-1202</span>
+      </div>
+
+      <div class="readiness-row">
+        <span class="readiness-label">Exam Readiness</span>
+        <span class="readiness-value" id="core2-readiness" style="color:var(--muted)">0%</span>
+      </div>
+
+      <div class="due-badge" id="core2-due" style="margin-bottom:1rem">— due today</div>
+      <div class="domain-list" id="core2-domains"></div>
+
+      <div style="display:flex;gap:0.5rem;margin-top:1rem">
+        <a href="flashcards.html?exam=core2&mode=due" class="study-btn" style="text-decoration:none;text-align:center;flex:2" id="core2-study-btn">Study Now</a>
+        <a href="flashcards.html?exam=core2&mode=weak" class="study-btn" style="text-decoration:none;text-align:center;flex:1;background:var(--surface2);color:var(--muted);border:1px solid var(--border)" title="Weak cards only">Weak</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Quick links -->
+  <div style="margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem">
+    <a href="quiz.html" style="text-decoration:none">
+      <div class="exam-card quick-link-card" style="cursor:pointer">
+        <div style="font-size:1.75rem;margin-bottom:0.5rem">📝</div>
+        <div style="font-weight:700;margin-bottom:0.25rem">Practice Quiz</div>
+        <div style="font-size:0.8rem;color:var(--muted)">Multiple choice, scored by domain</div>
+      </div>
+    </a>
+    <a href="reference.html" style="text-decoration:none">
+      <div class="exam-card quick-link-card" style="cursor:pointer">
+        <div style="font-size:1.75rem;margin-bottom:0.5rem">📋</div>
+        <div style="font-weight:700;margin-bottom:0.25rem">Reference Sheets</div>
+        <div style="font-size:0.8rem;color:var(--muted)">Ports, Wi-Fi, RAID, OSI, commands…</div>
+      </div>
+    </a>
+    <a href="glossary.html" style="text-decoration:none">
+      <div class="exam-card quick-link-card" style="cursor:pointer">
+        <div style="font-size:1.75rem;margin-bottom:0.5rem">🔤</div>
+        <div style="font-weight:700;margin-bottom:0.25rem">Acronym Glossary</div>
+        <div style="font-size:0.8rem;color:var(--muted)">Every abbreviation, searchable A–Z</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<script src="data/core1.js"></script>
+<script src="data/core2.js"></script>
+<script src="app.js"></script>
+<script>
+  document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+  });
+  renderDashboard();
+</script>
+</body>
+</html>

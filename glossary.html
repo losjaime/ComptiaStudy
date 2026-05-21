@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acronym Glossary — CompTIA A+ Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">CompTIA A+</a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="reference.html">Reference</a>
+    <a href="glossary.html" class="active">Glossary</a>
+  </div>
+</nav>
+
+<div class="page-container">
+
+  <div class="ref-header">
+    <h1 class="page-title">Acronym Glossary</h1>
+    <p class="page-subtitle"><span id="gloss-count"></span> terms — search or browse A–Z.</p>
+    <input
+      id="gloss-search"
+      class="gloss-search"
+      type="search"
+      placeholder="Search acronyms or definitions…"
+      autofocus
+    >
+  </div>
+
+  <div class="alpha-nav" id="alpha-nav"></div>
+
+  <div id="gloss-list"></div>
+
+  <p id="gloss-empty" class="hidden" style="text-align:center;color:var(--muted);padding:3rem">
+    No terms match your search.
+  </p>
+
+</div>
+
+<script src="glossary-data.js"></script>
+<script>
+  const search  = document.getElementById('gloss-search');
+  const listEl  = document.getElementById('gloss-list');
+  const emptyEl = document.getElementById('gloss-empty');
+  const alphaEl = document.getElementById('alpha-nav');
+  document.getElementById('gloss-count').textContent = GLOSSARY.length;
+
+  function render(filter) {
+    const q = (filter || '').toLowerCase().trim();
+    const filtered = q
+      ? GLOSSARY.filter(g => g.term.toLowerCase().includes(q) || g.def.toLowerCase().includes(q))
+      : GLOSSARY;
+
+    listEl.innerHTML = '';
+    if (filtered.length === 0) { emptyEl.classList.remove('hidden'); return; }
+    emptyEl.classList.add('hidden');
+
+    // Group by first letter
+    const groups = {};
+    filtered.forEach(g => {
+      const letter = g.term[0].toUpperCase();
+      if (!groups[letter]) groups[letter] = [];
+      groups[letter].push(g);
+    });
+
+    Object.keys(groups).sort().forEach(letter => {
+      const section = document.createElement('div');
+      section.className = 'gloss-letter-section';
+      section.id = 'letter-' + letter;
+      section.innerHTML = `<div class="gloss-letter-heading">${letter}</div>`;
+
+      groups[letter].forEach(({ term, def }) => {
+        const item = document.createElement('div');
+        item.className = 'gloss-item';
+        item.innerHTML = `<dt class="gloss-term">${term}</dt><dd class="gloss-def">${def}</dd>`;
+        section.appendChild(item);
+      });
+
+      listEl.appendChild(section);
+    });
+  }
+
+  function buildAlphaNav() {
+    const letters = [...new Set(GLOSSARY.map(g => g.term[0].toUpperCase()))].sort();
+    alphaEl.innerHTML = '';
+    letters.forEach(l => {
+      const a = document.createElement('a');
+      a.className = 'alpha-link';
+      a.textContent = l;
+      a.href = '#letter-' + l;
+      alphaEl.appendChild(a);
+    });
+  }
+
+  search.addEventListener('input', e => render(e.target.value));
+  buildAlphaNav();
+  render('');
+</script>
+</body>
+</html>

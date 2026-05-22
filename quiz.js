@@ -203,9 +203,9 @@ function showResults() {
 
 // Returns green/yellow/red based on percentage
 function scoreColor(pct) {
-  if (pct >= 70) return '#22c55e';
-  if (pct >= 50) return '#eab308';
-  return '#ef4444';
+  if (pct >= 70) return '#5aaa7a';
+  if (pct >= 50) return '#c9a030';
+  return '#c85a5a';
 }
 
 // Save last 10 quiz scores per exam+domain key

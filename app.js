@@ -138,7 +138,7 @@ function renderExamCard(exam) {
   const rv = document.getElementById(`${exam}-readiness`);
   if (rv) {
     rv.textContent = readiness + '%';
-    rv.style.color = readiness >= 70 ? '#22c55e' : readiness >= 35 ? '#eab308' : 'var(--muted)';
+    rv.style.color = readiness >= 70 ? '#5aaa7a' : readiness >= 35 ? '#c9a030' : 'var(--muted)';
   }
 
   const btn = document.getElementById(`${exam}-study-btn`);

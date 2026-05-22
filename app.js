@@ -11,7 +11,7 @@ function applyTheme(theme) {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem(LS_THEME) || 'dark';
+  const saved = localStorage.getItem(LS_THEME) || 'light';
   applyTheme(saved);
   const btn = document.getElementById('theme-toggle');
   if (btn) btn.addEventListener('click', () => {

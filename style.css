@@ -8,6 +8,7 @@
   --text: #ede8d8;
   --muted: #8a96a8;
   --accent: #c9a96e;
+  --btn-text: #0d1b2a;
 
   --c-mobile:    #9b72c8;
   --c-network:   #5b8fd4;
@@ -18,6 +19,18 @@
   --c-security:  #c85a5a;
   --c-softtroub: #c9a030;
   --c-ops:       #7080cc;
+}
+
+/* ── Light mode overrides ─────────────────── */
+[data-theme="light"] {
+  --bg: #f4efe4;
+  --surface: #ffffff;
+  --surface2: #ede8d8;
+  --border: #d5cabb;
+  --text: #1a2535;
+  --muted: #6b6455;
+  --accent: #9a7d35;
+  --btn-text: #f4efe4;
 }
 
 body {
@@ -155,7 +168,7 @@ body {
   border: none;
   border-radius: 10px;
   background: var(--accent);
-  color: var(--bg);
+  color: var(--btn-text);
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
@@ -379,7 +392,7 @@ body {
   border: none;
   border-radius: 10px;
   background: var(--accent);
-  color: var(--bg);
+  color: var(--btn-text);
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
@@ -465,7 +478,7 @@ body {
   width: 100%;
   padding: 0.85rem;
   background: var(--accent);
-  color: var(--bg);
+  color: var(--btn-text);
   border: none;
   border-radius: 12px;
   font-size: 1rem;
@@ -534,7 +547,7 @@ body {
   width: 100%;
   padding: 0.75rem;
   background: var(--accent);
-  color: var(--bg);
+  color: var(--btn-text);
   border: none;
   border-radius: 10px;
   font-size: 0.95rem;
@@ -576,7 +589,7 @@ body {
 .ref-filter-btn:hover, .ref-filter-btn.active {
   background: var(--accent);
   border-color: var(--accent);
-  color: var(--bg);
+  color: var(--btn-text);
 }
 .ref-section {
   background: var(--surface);
@@ -654,7 +667,7 @@ body {
   font-weight: 600;
   transition: background 0.15s, color 0.15s;
 }
-.alpha-link:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.alpha-link:hover { background: var(--accent); color: var(--btn-text); border-color: var(--accent); }
 .gloss-letter-section { margin-bottom: 1.5rem; }
 .gloss-letter-heading {
   font-size: 1.25rem;
@@ -687,6 +700,24 @@ body {
 }
 .readiness-label { font-size: 0.8rem; color: var(--muted); }
 .readiness-value { font-size: 1.5rem; font-weight: 800; }
+
+/* ── Theme toggle button ─────────────────── */
+.theme-toggle {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.theme-toggle:hover { background: var(--border); }
 
 /* ── Quick-link cards ────────────────────── */
 .quick-link-card { transition: border-color 0.15s; }

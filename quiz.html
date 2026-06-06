@@ -10,7 +10,14 @@
 <body>
 
 <nav class="site-nav">
-  <a href="index.html" class="nav-brand">CompTIA A+</a>
+  <div class="nav-brand-dropdown">
+    <button class="nav-brand">CompTIA <span class="nav-chevron">▾</span></button>
+    <div class="nav-dropdown-menu">
+      <div class="nav-dropdown-label">Certifications</div>
+      <a href="index.html" class="nav-dropdown-item">A+ (220-1201/1202)</a>
+      <a href="netplus.html" class="nav-dropdown-item">Network+ (N10-009)</a>
+    </div>
+  </div>
   <div class="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="flashcards.html">Flashcards</a>
@@ -31,9 +38,10 @@
       <div class="config-field">
         <label for="q-exam-select">Exam</label>
         <select id="q-exam-select">
-          <option value="both">Both Exams</option>
+          <option value="both">All Exams</option>
           <option value="core1">Core 1 (220-1201)</option>
           <option value="core2">Core 2 (220-1202)</option>
+          <option value="netplus">Network+ (N10-009)</option>
         </select>
       </div>
       <div class="config-field">
@@ -106,8 +114,10 @@
 
 <script src="data/core1.js"></script>
 <script src="data/core2.js"></script>
+<script src="data/netplus-week1.js"></script>
 <script src="data/quiz-core1.js"></script>
 <script src="data/quiz-core2.js"></script>
+<script src="data/quiz-netplus-week1.js"></script>
 <script src="theme.js"></script>
 <script src="app.js"></script>
 <script src="quiz.js"></script>

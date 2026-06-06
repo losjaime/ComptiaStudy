@@ -19,6 +19,12 @@
   --c-security:  #c85a5a;
   --c-softtroub: #c9a030;
   --c-ops:       #7080cc;
+
+  /* Network+ domain colors */
+  --c-np-osi:      #6c8fd6;
+  --c-np-tcpip:    #50b89c;
+  --c-np-ports:    #d48c4e;
+  --c-np-concepts: #a070cc;
 }
 
 /* ── Light mode overrides ─────────────────── */
@@ -420,6 +426,70 @@ body {
   white-space: nowrap;
   letter-spacing: -0.02em;
 }
+
+/* ── Nav dropdown ───────────────────────── */
+.nav-brand-dropdown {
+  position: relative;
+}
+.nav-brand-dropdown .nav-brand {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0;
+}
+.nav-chevron {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  transition: transform 0.2s;
+}
+.nav-brand-dropdown.open .nav-chevron {
+  transform: rotate(180deg);
+}
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.35rem;
+  min-width: 210px;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.nav-brand-dropdown.open .nav-dropdown-menu {
+  display: block;
+}
+.nav-dropdown-item {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.85rem;
+  border-radius: 7px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.nav-dropdown-item:hover {
+  background: var(--surface2);
+}
+.nav-dropdown-item.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+.nav-dropdown-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.75rem 0.15rem;
+  font-weight: 600;
+}
 .nav-links {
   display: flex;
   gap: 0.25rem;
@@ -722,6 +792,48 @@ body {
 /* ── Quick-link cards ────────────────────── */
 .quick-link-card { transition: border-color 0.15s; }
 .quick-link-card:hover { border-color: var(--accent); }
+
+/* ── Responsive ──────────────────────────── */
+/* ── Week cards (Network+ dashboard) ──── */
+.week-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.week-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.week-card.locked {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.week-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.week-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+.week-badge.active {
+  background: #5aaa7a22;
+  color: #5aaa7a;
+  border: 1px solid #5aaa7a44;
+}
+.week-badge.locked {
+  background: var(--surface2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
 
 /* ── Responsive ──────────────────────────── */
 @media (max-width: 600px) {

@@ -28,7 +28,7 @@ const modeSelectEl   = document.getElementById('fc-mode-select');
 
 // ── Domain select ─────────────────────────────────────────────────────────────
 function populateDomainSelect(exam) {
-  const cards = exam === 'core1' ? CORE1_CARDS : CORE2_CARDS;
+  const cards = getExamCards(exam);
   const domains = [];
   const seen = new Set();
   cards.forEach(c => { if (!seen.has(c.domain)) { seen.add(c.domain); domains.push(c.domain); } });
@@ -43,7 +43,7 @@ function populateDomainSelect(exam) {
 
 // ── Build deck ────────────────────────────────────────────────────────────────
 function buildDeck() {
-  const sourceCards = activeExam === 'core1' ? CORE1_CARDS : CORE2_CARDS;
+  const sourceCards = getExamCards(activeExam);
   const filtered = activeDomain === 'all'
     ? sourceCards
     : sourceCards.filter(c => c.domain === activeDomain);
@@ -167,3 +167,7 @@ if (modeSelectEl) modeSelectEl.value = activeMode;
 populateDomainSelect(activeExam);
 domainSelectEl.value = activeDomain;
 buildDeck();
+
+if (activeExam === 'netplus') {
+  document.querySelectorAll('a[href="index.html"]').forEach(a => { a.href = 'netplus.html'; });
+}

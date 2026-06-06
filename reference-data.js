@@ -260,4 +260,90 @@ const REFERENCE_SECTIONS = [
       ["FTPS", "Secure file transfer", "FTP over TLS — port 990 (implicit) or 21 (explicit)"],
     ]
   },
+
+  // ── Network+ Reference Sections ────────────────────────────────────────────
+
+  {
+    id: "np-osi-detail",
+    title: "OSI Model — Detailed Breakdown",
+    exam: "netplus",
+    type: "table",
+    columns: ["Layer", "Name", "Function", "Protocols / Examples", "Device", "PDU"],
+    rows: [
+      ["7", "Application", "User interface to the network; provides network services", "HTTP, HTTPS, FTP, SSH, DNS, DHCP, SMTP, POP3, IMAP, SNMP", "—", "Data"],
+      ["6", "Presentation", "Data formatting, encryption/decryption, compression", "TLS/SSL, JPEG, MPEG, ASCII, GIF, PNG", "—", "Data"],
+      ["5", "Session", "Establishes, manages, and terminates sessions", "NetBIOS, RPC, SQL sessions, PPTP", "—", "Data"],
+      ["4", "Transport", "End-to-end delivery, flow control, error recovery", "TCP (reliable), UDP (fast)", "Firewall", "Segment / Datagram"],
+      ["3", "Network", "Logical addressing (IP) and routing", "IP, ICMP, ARP, IGMP", "Router, L3 Switch", "Packet"],
+      ["2", "Data Link", "MAC addressing, framing, error detection", "Ethernet, Wi-Fi (802.11), PPP, MAC", "Switch, Bridge", "Frame"],
+      ["1", "Physical", "Raw bit transmission — cables, signals, voltages", "Ethernet cables, fiber, hubs, repeaters", "Hub, Repeater, NIC", "Bit"],
+    ]
+  },
+  {
+    id: "np-tcpip-vs-osi",
+    title: "TCP/IP Model vs. OSI Model",
+    exam: "netplus",
+    type: "table",
+    columns: ["TCP/IP Layer", "OSI Layer(s)", "Key Protocols", "Function"],
+    rows: [
+      ["Application", "7 – Application\n6 – Presentation\n5 – Session", "HTTP, FTP, SSH, DNS, SMTP, DHCP, TLS", "User-facing services, data formatting, sessions"],
+      ["Transport", "4 – Transport", "TCP, UDP", "End-to-end delivery, flow control, reliability"],
+      ["Internet", "3 – Network", "IP (v4/v6), ICMP, IGMP, ARP", "Logical addressing and routing"],
+      ["Network Access", "2 – Data Link\n1 – Physical", "Ethernet, Wi-Fi, PPP", "Physical transmission and local addressing (MAC)"],
+    ]
+  },
+  {
+    id: "np-ports",
+    title: "Network+ Must-Memorize Ports",
+    exam: "netplus",
+    type: "table",
+    columns: ["Port(s)", "Protocol", "Transport", "What to Remember"],
+    rows: [
+      ["20/21", "FTP", "TCP", "20 = data transfer, 21 = control/commands"],
+      ["22", "SSH / SFTP / SCP", "TCP", "Encrypted remote shell & file transfer"],
+      ["23", "Telnet", "TCP", "Unencrypted remote shell — never use, replaced by SSH"],
+      ["25", "SMTP", "TCP", "Sending email between servers"],
+      ["53", "DNS", "TCP/UDP", "UDP for queries, TCP for zone transfers"],
+      ["67/68", "DHCP", "UDP", "67 = server listens, 68 = client listens"],
+      ["80", "HTTP", "TCP", "Unencrypted web traffic"],
+      ["110", "POP3", "TCP", "Download email; removes from server"],
+      ["143", "IMAP", "TCP", "Email on server; multi-device access"],
+      ["161/162", "SNMP", "UDP", "161 = polling, 162 = traps (alerts)"],
+      ["443", "HTTPS", "TCP", "Encrypted web traffic (TLS)"],
+      ["587", "SMTP Submission", "TCP", "Client sends outgoing email"],
+      ["993", "IMAPS", "TCP", "Secure IMAP over TLS"],
+      ["995", "POP3S", "TCP", "Secure POP3 over TLS"],
+      ["3389", "RDP", "TCP", "Windows Remote Desktop"],
+    ]
+  },
+  {
+    id: "np-tcp-vs-udp",
+    title: "TCP vs. UDP Comparison",
+    exam: "netplus",
+    type: "table",
+    columns: ["Feature", "TCP", "UDP"],
+    rows: [
+      ["Connection", "Connection-oriented (three-way handshake)", "Connectionless (no handshake)"],
+      ["Reliability", "Reliable — guarantees delivery and order", "Unreliable — no delivery guarantee"],
+      ["Speed", "Slower (overhead for reliability)", "Faster (minimal overhead)"],
+      ["Error Checking", "Yes — retransmits lost packets", "Checksum only — no retransmission"],
+      ["Flow Control", "Yes — sliding window mechanism", "No"],
+      ["Ordering", "Packets arrive in order", "Packets may arrive out of order"],
+      ["Header Size", "20 bytes minimum", "8 bytes"],
+      ["Use Cases", "HTTP/S, FTP, SSH, SMTP, email", "DNS queries, VoIP, streaming, gaming, DHCP"],
+    ]
+  },
+  {
+    id: "np-comm-types",
+    title: "Network Communication Types",
+    exam: "netplus",
+    type: "table",
+    columns: ["Type", "Description", "Example", "IPv6 Support"],
+    rows: [
+      ["Unicast", "One-to-one: single sender → single receiver", "Loading a webpage, SSH session", "Yes"],
+      ["Multicast", "One-to-many: sender → group of receivers", "Video streaming, OSPF updates", "Yes (replaces broadcast)"],
+      ["Broadcast", "One-to-all: sender → every device on segment", "ARP request, DHCP Discover", "IPv4 only — not in IPv6"],
+      ["Anycast", "One-to-nearest: sender → closest group member", "CDN delivery, DNS root servers", "Yes (native in IPv6)"],
+    ]
+  },
 ];

@@ -1,4 +1,8 @@
-const ALL_QUIZ = [...QUIZ_CORE1, ...QUIZ_CORE2];
+const ALL_QUIZ = [
+  ...(typeof QUIZ_CORE1 !== 'undefined' ? QUIZ_CORE1 : []),
+  ...(typeof QUIZ_CORE2 !== 'undefined' ? QUIZ_CORE2 : []),
+  ...(typeof QUIZ_NETPLUS_WEEK1 !== 'undefined' ? QUIZ_NETPLUS_WEEK1 : []),
+];
 const LS_QUIZ  = 'comptia_quiz_scores';
 
 function getQuizScores() { return JSON.parse(localStorage.getItem(LS_QUIZ) || '{}'); }
@@ -44,9 +48,16 @@ const rConfigBtn    = document.getElementById('r-config-btn');
 
 // --- Domain select ---
 // Rebuilds the domain dropdown whenever the exam selection changes
+function getQuizSource(exam) {
+  if (exam === 'core1') return typeof QUIZ_CORE1 !== 'undefined' ? QUIZ_CORE1 : [];
+  if (exam === 'core2') return typeof QUIZ_CORE2 !== 'undefined' ? QUIZ_CORE2 : [];
+  if (exam === 'netplus') return typeof QUIZ_NETPLUS_WEEK1 !== 'undefined' ? QUIZ_NETPLUS_WEEK1 : [];
+  return ALL_QUIZ;
+}
+
 function populateDomains() {
   const exam = examSel.value;
-  const source = exam === 'core1' ? QUIZ_CORE1 : exam === 'core2' ? QUIZ_CORE2 : ALL_QUIZ;
+  const source = getQuizSource(exam);
   const domains = [...new Set(source.map(q => q.domain))].sort();
 
   domainSel.innerHTML = '<option value="all">All domains</option>';
@@ -67,7 +78,7 @@ startBtn.addEventListener('click', () => {
   activeDomain   = domainSel.value;
   totalQuestions = parseInt(countSel.value, 10);
 
-  const source = activeExam === 'core1' ? QUIZ_CORE1 : activeExam === 'core2' ? QUIZ_CORE2 : ALL_QUIZ;
+  const source = getQuizSource(activeExam);
   let pool = activeDomain === 'all' ? source : source.filter(q => q.domain === activeDomain);
   if (pool.length === 0) pool = source;
 

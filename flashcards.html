@@ -10,7 +10,14 @@
 <body style="display:flex;flex-direction:column;min-height:100vh">
 
 <nav class="site-nav">
-  <a href="index.html" class="nav-brand">CompTIA A+</a>
+  <div class="nav-brand-dropdown">
+    <button class="nav-brand">CompTIA <span class="nav-chevron">▾</span></button>
+    <div class="nav-dropdown-menu">
+      <div class="nav-dropdown-label">Certifications</div>
+      <a href="index.html" class="nav-dropdown-item">A+ (220-1201/1202)</a>
+      <a href="netplus.html" class="nav-dropdown-item">Network+ (N10-009)</a>
+    </div>
+  </div>
   <div class="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="flashcards.html" class="active">Flashcards</a>
@@ -28,6 +35,7 @@
     <select id="fc-exam-select">
       <option value="core1">Core 1 (220-1201)</option>
       <option value="core2">Core 2 (220-1202)</option>
+      <option value="netplus">Network+ (N10-009)</option>
     </select>
     <select id="fc-domain-select">
       <option value="all">All domains</option>
@@ -90,6 +98,7 @@
 
 <script src="data/core1.js"></script>
 <script src="data/core2.js"></script>
+<script src="data/netplus-week1.js"></script>
 <script src="theme.js"></script>
 <script src="app.js"></script>
 <script src="flashcards.js"></script>

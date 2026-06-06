@@ -96,6 +96,22 @@ const GLOSSARY = [
   { term:"WPA2",    def:"Wi-Fi Protected Access 2 — current minimum Wi-Fi encryption standard using CCMP/AES. WPA3 is the improved successor." },
   { term:"WPA3",    def:"Wi-Fi Protected Access 3 — latest Wi-Fi security standard using SAE, offering stronger protection against password attacks and forward secrecy." },
   { term:"WLAN",    def:"Wireless Local Area Network — a LAN using Wi-Fi (IEEE 802.11) instead of physical cables." },
+
+  // ── Network+ Terms ─────────────────────────────────────────────────────────
+
+  { term:"FTP",     def:"File Transfer Protocol (ports 20/21) — transfers files between client and server. Port 21 = control, Port 20 = data. Unencrypted — use SFTP instead." },
+  { term:"HTTP",    def:"Hypertext Transfer Protocol (port 80) — the foundation of web communication. Transfers web pages and data in plaintext. Use HTTPS for encryption." },
+  { term:"ICMP",    def:"Internet Control Message Protocol — used for diagnostic and error messages (ping, traceroute). Operates at OSI Layer 3 (Network)." },
+  { term:"IGMP",    def:"Internet Group Management Protocol — manages multicast group memberships on IPv4 networks. Allows devices to join or leave multicast groups." },
+  { term:"IANA",    def:"Internet Assigned Numbers Authority — the organization that assigns IP addresses, port numbers, and other internet-related identifiers globally." },
+  { term:"LLC",     def:"Logical Link Control — the upper sublayer of OSI Layer 2 (Data Link). Handles flow control and error checking between network nodes." },
+  { term:"MTU",     def:"Maximum Transmission Unit — the largest packet size (in bytes) that a network interface can transmit. Standard Ethernet MTU is 1500 bytes." },
+  { term:"OSI",     def:"Open Systems Interconnection — a 7-layer reference model for understanding how network protocols interact: Physical, Data Link, Network, Transport, Session, Presentation, Application." },
+  { term:"OUI",     def:"Organizationally Unique Identifier — the first 24 bits (3 bytes) of a MAC address, assigned by IEEE to identify the hardware manufacturer." },
+  { term:"PDU",     def:"Protocol Data Unit — the unit of data at each OSI layer. Layer 1 = Bit, Layer 2 = Frame, Layer 3 = Packet, Layer 4 = Segment/Datagram." },
+  { term:"SFTP",    def:"SSH File Transfer Protocol (port 22) — provides encrypted file transfer over SSH. Preferred over FTP for security." },
+  { term:"Telnet",  def:"Telnet (port 23) — an unencrypted protocol for remote command-line access. All data including passwords sent in plaintext. Replaced by SSH." },
+  { term:"TTL",     def:"Time to Live — a field in an IP packet header that limits how many hops a packet can make before being discarded. Prevents infinite routing loops." },
 ];
 
 GLOSSARY.sort((a, b) => a.term.localeCompare(b.term));

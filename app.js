@@ -1,8 +1,12 @@
 const LS_CARDS  = 'comptia_cards';
 const LS_STREAK = 'comptia_streak';
 
-// Defined after data scripts load
-const ALL_CARDS = [...CORE1_CARDS, ...CORE2_CARDS];
+// Defined after data scripts load — guards allow pages that only load some data files
+const ALL_CARDS = [
+  ...(typeof CORE1_CARDS !== 'undefined' ? CORE1_CARDS : []),
+  ...(typeof CORE2_CARDS !== 'undefined' ? CORE2_CARDS : []),
+  ...(typeof NETPLUS_WEEK1_CARDS !== 'undefined' ? NETPLUS_WEEK1_CARDS : []),
+];
 
 // ── LocalStorage ──────────────────────────────────────────────────────────────
 function getCardProgress() { return JSON.parse(localStorage.getItem(LS_CARDS) || '{}'); }
@@ -85,6 +89,12 @@ const DOMAIN_WEIGHTS = {
     'Security': 0.28,
     'Software Troubleshooting': 0.23,
     'Operational Procedures': 0.21,
+  },
+  netplus: {
+    'OSI Model': 0.25,
+    'TCP/IP Model': 0.15,
+    'Ports & Protocols': 0.35,
+    'Network Concepts': 0.25,
   }
 };
 
@@ -113,8 +123,19 @@ const DOMAIN_COLORS = {
   'Security':                           'var(--c-security)',
   'Software Troubleshooting':           'var(--c-softtroub)',
   'Operational Procedures':             'var(--c-ops)',
+  'OSI Model':                          'var(--c-np-osi)',
+  'TCP/IP Model':                       'var(--c-np-tcpip)',
+  'Ports & Protocols':                  'var(--c-np-ports)',
+  'Network Concepts':                   'var(--c-np-concepts)',
 };
 function domainColor(name) { return DOMAIN_COLORS[name] || 'var(--accent)'; }
+
+function getExamCards(exam) {
+  if (exam === 'core1') return typeof CORE1_CARDS !== 'undefined' ? CORE1_CARDS : [];
+  if (exam === 'core2') return typeof CORE2_CARDS !== 'undefined' ? CORE2_CARDS : [];
+  if (exam === 'netplus') return typeof NETPLUS_WEEK1_CARDS !== 'undefined' ? NETPLUS_WEEK1_CARDS : [];
+  return ALL_CARDS;
+}
 
 
 // ── Dashboard rendering ───────────────────────────────────────────────────────

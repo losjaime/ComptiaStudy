@@ -695,7 +695,7 @@ body {
 }
 .ref-table th:first-child { border-radius: 6px 0 0 6px; }
 .ref-table th:last-child  { border-radius: 0 6px 6px 0; }
-.ref-table td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.45; }
+.ref-table td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.45; white-space: pre-line; }
 .ref-table tr:last-child td { border-bottom: none; }
 .ref-table tr:hover td { background: var(--surface2); }
 .ref-key-col { font-weight: 700; color: var(--accent); font-family: monospace; white-space: nowrap; }

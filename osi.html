@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive OSI 7-layer model explorer — protocols, ports, devices, and exam tips for CompTIA Network+.">
+  <title>OSI Model Explorer — CompTIA Study</title>
+  <link rel="stylesheet" href="style.css">
+  <script>if(localStorage.getItem('comptia_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-brand-dropdown">
+    <button class="nav-brand">CompTIA <span class="nav-chevron">▾</span></button>
+    <div class="nav-dropdown-menu">
+      <div class="nav-dropdown-label">Certifications</div>
+      <a href="index.html" class="nav-dropdown-item">A+ (220-1201/1202)</a>
+      <a href="netplus.html" class="nav-dropdown-item active">Network+ (N10-009)</a>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="netplus.html">Dashboard</a>
+    <a href="flashcards.html?exam=netplus">Flashcards</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="reference.html">Reference</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="osi.html" class="active">OSI Explorer</a>
+    <a href="simulator.html">Simulator</a>
+  </div>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">☀</button>
+</nav>
+
+<div class="page-container">
+
+  <div class="ref-header">
+    <h1 class="page-title">OSI Model Explorer</h1>
+    <p class="page-subtitle">Click any layer to expand its protocols, devices, PDU name, and an exam tip.</p>
+  </div>
+
+  <div class="osi-mnemonics">
+    <div class="mnemonic-card">
+      <div class="mnemonic-label">Bottom-up (Layer 1 → 7)</div>
+      <div class="mnemonic-phrase">Please Do Not Throw Sausage Pizza Away</div>
+      <div class="mnemonic-order">Physical · Data Link · Network · Transport · Session · Presentation · Application</div>
+    </div>
+    <div class="mnemonic-card">
+      <div class="mnemonic-label">Top-down (Layer 7 → 1)</div>
+      <div class="mnemonic-phrase">All People Seem To Need Data Processing</div>
+      <div class="mnemonic-order">Application · Presentation · Session · Transport · Network · Data Link · Physical</div>
+    </div>
+  </div>
+
+  <div id="osi-stack" class="osi-stack"></div>
+
+  <div class="ref-header">
+    <h2 style="font-size:1.1rem;font-weight:700">TCP/IP Model vs. OSI Model</h2>
+  </div>
+  <div id="tcpip-table"></div>
+
+</div>
+
+<script src="data/osi-layers.js"></script>
+<script src="reference-data.js"></script>
+<script src="theme.js"></script>
+<script>
+  // Build the interactive layer stack, Layer 7 at top down to Layer 1
+  const stackEl = document.getElementById('osi-stack');
+  OSI_LAYERS.forEach(layer => {
+    const row = document.createElement('div');
+    row.className = 'osi-layer';
+    row.dataset.layer = layer.num;
+    row.innerHTML = `
+      <button class="osi-layer-header" type="button">
+        <span class="osi-layer-num">${layer.num}</span>
+        <span class="osi-layer-name">${layer.name}</span>
+        <span class="osi-layer-pdu-hint">${layer.pdu}</span>
+        <span class="osi-layer-chevron">▾</span>
+      </button>
+      <div class="osi-layer-detail">
+        <div class="osi-layer-detail-inner">
+          <div>
+            <div class="osi-detail-label">Function</div>
+            <div class="osi-detail-value">${layer.function}</div>
+          </div>
+          <div>
+            <div class="osi-detail-label">Protocols &amp; Ports</div>
+            <div class="osi-detail-value">${layer.protocols}</div>
+          </div>
+          <div>
+            <div class="osi-detail-label">Devices</div>
+            <div class="osi-detail-value">${layer.devices}</div>
+          </div>
+          <div>
+            <div class="osi-detail-label">PDU Name</div>
+            <div class="osi-detail-value">${layer.pdu}</div>
+          </div>
+          <div class="osi-tip-box"><strong>Exam tip:</strong> ${layer.examTip}</div>
+        </div>
+      </div>`;
+    row.querySelector('.osi-layer-header').addEventListener('click', () => {
+      row.classList.toggle('open');
+    });
+    stackEl.appendChild(row);
+  });
+
+  // Pull the TCP/IP comparison table straight from the shared reference data
+  const section = REFERENCE_SECTIONS.find(s => s.id === 'np-tcpip-vs-osi');
+  if (section) {
+    const wrap = document.createElement('div');
+    wrap.className = 'ref-section';
+    wrap.innerHTML = `<div class="ref-table-wrap"><table class="ref-table">
+      <thead><tr>${section.columns.map(c => `<th>${c}</th>`).join('')}</tr></thead>
+      <tbody>${section.rows.map(row =>
+        `<tr>${row.map((cell, i) => {
+          const cls = i === 0 ? ' class="ref-key-col"' : '';
+          return `<td${cls}>${cell}</td>`;
+        }).join('')}</tr>`
+      ).join('')}</tbody>
+    </table></div>`;
+    document.getElementById('tcpip-table').appendChild(wrap);
+  }
+</script>
+</body>
+</html>

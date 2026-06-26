@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Network troubleshooting simulator — diagnose realistic scenarios step by step, tied to the OSI model.">
+  <title>Troubleshooting Simulator — CompTIA Study</title>
+  <link rel="stylesheet" href="style.css">
+  <script>if(localStorage.getItem('comptia_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-brand-dropdown">
+    <button class="nav-brand">CompTIA <span class="nav-chevron">▾</span></button>
+    <div class="nav-dropdown-menu">
+      <div class="nav-dropdown-label">Certifications</div>
+      <a href="index.html" class="nav-dropdown-item">A+ (220-1201/1202)</a>
+      <a href="netplus.html" class="nav-dropdown-item active">Network+ (N10-009)</a>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="netplus.html">Dashboard</a>
+    <a href="flashcards.html?exam=netplus">Flashcards</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="reference.html">Reference</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="osi.html">OSI Explorer</a>
+    <a href="simulator.html" class="active">Simulator</a>
+  </div>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">☀</button>
+</nav>
+
+<!-- ── Scenario Select ─────────────────────────────────────────────────────── -->
+<div id="sim-select" class="page-container">
+  <div class="ref-header">
+    <h1 class="page-title">Troubleshooting Simulator</h1>
+    <p class="page-subtitle">Work through realistic network problems step by step. Each step ties back to an OSI layer.</p>
+  </div>
+  <div id="scenario-grid" class="scenario-grid"></div>
+</div>
+
+<!-- ── Active Scenario ──────────────────────────────────────────────────────── -->
+<div id="sim-active" class="hidden page-container">
+  <div class="quiz-header-bar">
+    <span class="card-counter">Step <span id="sim-step-num">1</span> of <span id="sim-step-total">3</span> — <span id="sim-scenario-title"></span></span>
+  </div>
+  <div class="session-progress-bar" style="margin-bottom:2rem">
+    <div class="session-progress-fill" id="sim-progress-fill" style="width:0%"></div>
+  </div>
+
+  <div class="quiz-card">
+    <p id="sim-prompt" class="quiz-question-text"></p>
+
+    <div id="sim-options" class="options-list"></div>
+
+    <div id="sim-feedback-box" class="explanation-box hidden">
+      <div class="explanation-label">Feedback</div>
+      <p id="sim-feedback"></p>
+      <span id="sim-osi-tag" class="osi-tag"></span>
+    </div>
+
+    <button id="sim-next-btn" class="next-btn hidden">Next Step →</button>
+  </div>
+</div>
+
+<!-- ── Results ──────────────────────────────────────────────────────────────── -->
+<div id="sim-results" class="hidden page-container">
+  <div class="results-card">
+    <div style="font-size:3rem;text-align:center">🛠️</div>
+    <h2 style="text-align:center;margin-bottom:0.5rem">Scenario Complete!</h2>
+    <div class="score-display">
+      <span id="sim-r-score" class="score-big">0</span>
+      <span class="score-sep"> / </span>
+      <span id="sim-r-total" class="score-big">0</span>
+    </div>
+    <div id="sim-r-pct" class="score-pct">0%</div>
+    <div class="progress-track" style="height:10px;border-radius:999px;margin-bottom:1.5rem">
+      <div id="sim-r-bar" class="progress-fill" style="width:0%;height:100%;border-radius:999px"></div>
+    </div>
+    <div id="sim-r-breakdown" class="r-breakdown"></div>
+    <div class="session-actions" style="margin-top:1.5rem">
+      <button id="sim-retry-btn" class="btn-secondary">Retry Scenario</button>
+      <button id="sim-back-btn" class="btn-primary">Back to Scenarios</button>
+    </div>
+  </div>
+</div>
+
+<script src="data/simulator-scenarios.js"></script>
+<script src="theme.js"></script>
+<script src="simulator.js"></script>
+</body>
+</html>

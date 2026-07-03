@@ -71,16 +71,20 @@
     </div>
   </div>
 
-  <!-- Week cards -->
-  <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem">Study Plan — 8 Week Schedule</h2>
+  <!-- Module cards -->
+  <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
+    <h2 style="font-size:1.1rem;font-weight:700">Study Plan — Learn at Your Own Pace</h2>
+    <a href="https://www.youtube.com/playlist?list=PLG49S3nxzAnl_tQe3kvnmeMid0mjF8Le8" target="_blank" rel="noopener" style="font-size:0.8rem;color:var(--accent);text-decoration:none">📹 Full Prof. Messer Playlist ↗</a>
+  </div>
 
   <div class="week-grid">
 
-    <!-- Week 1-2: Active -->
-    <div class="week-card" id="week1-card">
+    <!-- Module 1: Active -->
+    <div class="week-card" id="module1-card">
       <div class="week-card-header">
         <div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Week 1–2: Networking Fundamentals</h3>
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.2rem">Module 1</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Networking Fundamentals</h3>
           <div style="font-size:0.75rem;color:var(--muted)">OSI Model · TCP/IP Model · Ports & Protocols · Network Concepts</div>
         </div>
         <span class="week-badge active">Active</span>
@@ -89,61 +93,77 @@
       <div class="due-badge" id="np-due" style="margin-bottom:1rem">— due today</div>
       <div class="domain-list" id="np-domains"></div>
 
+      <div class="video-links">
+        <div class="video-links-header">📹 Professor Messer Videos</div>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=AYgXr1dynKU" target="_blank" rel="noopener">Understanding the OSI Model (1.1)</a></li>
+          <li><a href="https://www.youtube.com/watch?v=ueth6WvFVMU" target="_blank" rel="noopener">Introduction to IP (1.4)</a></li>
+          <li><a href="https://www.youtube.com/watch?v=jX1pobYmZdE" target="_blank" rel="noopener">Common Ports (1.4)</a></li>
+          <li><a href="https://www.youtube.com/watch?v=5BahWbszVAY" target="_blank" rel="noopener">Other Useful Protocols (1.4)</a></li>
+          <li><a href="https://www.youtube.com/watch?v=CCrY5SYtbz8" target="_blank" rel="noopener">Network Communication — unicast, multicast, broadcast</a></li>
+        </ul>
+      </div>
+
       <div style="display:flex;gap:0.5rem;margin-top:1rem">
         <a href="flashcards.html?exam=netplus&mode=due" class="study-btn" style="text-decoration:none;text-align:center;flex:2" id="np-study-btn">Study Now</a>
         <a href="flashcards.html?exam=netplus&mode=weak" class="study-btn" style="text-decoration:none;text-align:center;flex:1;background:var(--surface2);color:var(--muted);border:1px solid var(--border)" title="Weak cards only">Weak</a>
       </div>
     </div>
 
-    <!-- Week 3-4: Locked -->
+    <!-- Module 2: Locked -->
     <div class="week-card locked">
       <div class="week-card-header">
         <div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Week 3–4: IP Addressing & Routing</h3>
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.2rem">Module 2</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">IP Addressing & Routing</h3>
           <div style="font-size:0.75rem;color:var(--muted)">IPv4 · Subnetting · IPv6 · Routing · DHCP · DNS</div>
         </div>
         <span class="week-badge locked">Coming Soon</span>
       </div>
     </div>
 
-    <!-- Week 5: Locked -->
+    <!-- Module 3: Locked -->
     <div class="week-card locked">
       <div class="week-card-header">
         <div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Week 5: Network Infrastructure</h3>
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.2rem">Module 3</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Network Infrastructure</h3>
           <div style="font-size:0.75rem;color:var(--muted)">Switches · Routers · Firewalls · VLANs · Wireless · Cloud · Cables</div>
         </div>
         <span class="week-badge locked">Coming Soon</span>
       </div>
     </div>
 
-    <!-- Week 6: Locked -->
+    <!-- Module 4: Locked -->
     <div class="week-card locked">
       <div class="week-card-header">
         <div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Week 6: Network Security & Troubleshooting</h3>
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.2rem">Module 4</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Network Security & Troubleshooting</h3>
           <div style="font-size:0.75rem;color:var(--muted)">CIA Triad · Attacks · VPN · NAT · ACLs · SNMP · Troubleshooting Tools</div>
         </div>
         <span class="week-badge locked">Coming Soon</span>
       </div>
     </div>
 
-    <!-- Week 7: Locked -->
+    <!-- Module 5: Locked -->
     <div class="week-card locked">
       <div class="week-card-header">
         <div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Week 7: Full Review & Practice Tests</h3>
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.2rem">Module 5</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Full Review & Practice Tests</h3>
           <div style="font-size:0.75rem;color:var(--muted)">Practice exams · Review wrong answers · Target 80%+ consistently</div>
         </div>
         <span class="week-badge locked">Coming Soon</span>
       </div>
     </div>
 
-    <!-- Week 8: Locked -->
+    <!-- Module 6: Locked -->
     <div class="week-card locked">
       <div class="week-card-header">
         <div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Week 8: Final Prep & Exam Day</h3>
+          <div style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-bottom:0.2rem">Module 6</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.2rem">Final Prep & Exam Day</h3>
           <div style="font-size:0.75rem;color:var(--muted)">Light review · Final practice exam · Exam logistics · Pass!</div>
         </div>
         <span class="week-badge locked">Coming Soon</span>

@@ -966,6 +966,49 @@ body {
   border: 1px solid var(--border);
 }
 
+/* ── Video links (Prof. Messer) ────────── */
+.video-links {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface2);
+  border-radius: 10px;
+  border-left: 3px solid #ff4444;
+}
+.video-links-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.video-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.video-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.15s;
+}
+.video-links a::before {
+  content: "▶";
+  color: #ff4444;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+.video-links a:hover {
+  color: var(--accent);
+}
+
 /* ── Responsive ──────────────────────────── */
 @media (max-width: 600px) {
   .dash-stats { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
